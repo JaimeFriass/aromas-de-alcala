@@ -1,51 +1,20 @@
 ---
-const features = [
-    {
-        title: "Wifi incluido",
-        description:
-            "Varios espacios preparados para poder trabajar a distancia con internet de alta velocidad.",
-        icon: "wifi",
-    },
-    {
-        title: "Cocina equipada",
-        description:
-            "Cuenta con nevera americana, horno, lavavajillas, microondas, barra, vitrocerámica, cafetera, hervidor, menaje...",
-        icon: "kitchen",
-    },
-    {
-        title: "Amplios exteriores",
-        description:
-            "Vivienda rodeada de amplios exteriores, porche, piscina de agua salada y aparcamiento privado y techado.",
-        icon: "pool",
-    },
-    {
-        title: "Energía limpia",
-        description:
-            "Equipada con placas solares en el tejado, la vivienda permite generar su propia energía de manera limpia y renovable.",
-        icon: "solar",
-    },
-    {
-        title: "Barbacoa exterior",
-        description:
-            "Al lado del porche, disponemos de una barbacoa de obra exterior techada con barra al aire libre.",
-        icon: "bbq",
-    },
-    {
-        title: "Dormitorios preparados",
-        description:
-            "Te dejaremos preparado todo para tu estancia: ropa de cama, toallas, secador, gel y champú.",
-        icon: "bed",
-    },
-];
+interface Props {
+    data: {
+        label: string;
+        title: string;
+        description: string;
+        features: {
+            title: string;
+            description: string;
+            icon: string;
+        }[];
+        extras_title: string;
+        extras: string[];
+    };
+}
 
-const extras = [
-    "Baño accesible en la primera planta (sin escaleras)",
-    "Calefacción (aerotermia). Modo frío y calor",
-    "Ventiladores adicionales",
-    "Televisión 65'' Smart TV",
-    "Lavadora",
-    "Juegos de mesa",
-];
+const { data } = Astro.props;
 ---
 
 <section class="py-16 bg-stone-50 overflow-hidden">
@@ -54,17 +23,15 @@ const extras = [
             <div class="lg:w-5/12 text-left relative z-10">
                 <span
                     class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block"
-                    >Todo lo que necesitas</span
+                    >{data.label}</span
                 >
                 <h2
                     class="text-4xl md:text-5xl font-bold text-stone-900 mb-4 font-sans"
                 >
-                    Nuestras Instalaciones
+                    {data.title}
                 </h2>
                 <p class="text-lg text-stone-600 leading-relaxed mb-6">
-                    Disfruta de una casa totalmente equipada donde el diseño
-                    tradicional se une al confort moderno. Espacios amplios,
-                    luminosos y pensados para el disfrute de toda la familia.
+                    {data.description}
                 </p>
             </div>
             <div class="lg:w-7/12 flex justify-center lg:justify-end">
@@ -85,7 +52,7 @@ const extras = [
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {
-                features.map((feature) => (
+                data.features.map((feature) => (
                     <div class="flex flex-col items-start p-8 rounded-2xl border border-stone-200 hover:border-stone-300 hover:shadow-md transition-all duration-300 bg-white group">
                         <div class="mb-6 relative w-24 h-24 transition-transform duration-300 transform group-hover:scale-105">
                             <img
@@ -108,13 +75,13 @@ const extras = [
 
         <div class="border-t border-stone-200 pt-16">
             <h3 class="text-2xl font-bold text-stone-900 mb-10 text-center">
-                Y mucho más...
+                {data.extras_title}
             </h3>
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-12 max-w-5xl mx-auto"
             >
                 {
-                    extras.map((extra) => (
+                    data.extras.map((extra) => (
                         <div class="flex items-center text-stone-700 py-2 border-b border-stone-100 last:border-0 hover:pl-2 transition-all duration-200 cursor-default">
                             <span class="text-accent mr-3">✓</span>
                             <span class="font-light">{extra}</span>

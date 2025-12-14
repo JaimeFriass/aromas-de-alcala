@@ -1,0 +1,38 @@
+{
+    "hero": {
+        "title": "Descubre el entorno",
+        "subtitle": "Historia, naturaleza y gastronomía a un paso de tu villa"
+    },
+    "featured": {
+        "badge": "Imprescindible",
+        "title": "Fortaleza de la Mota",
+        "description": "Una imponente ciudad fortificada que domina el paisaje. Descubre sus murallas, la Iglesia Mayor Abacial y los secretos de la frontera nazarí. Una visita obligada para entender la historia de Andalucía.",
+        "cta": "Más información"
+    },
+    "list": [
+        {
+            "title": "Casco Histórico",
+            "description": "Pasea por el centro de Alcalá, visita el Palacio Abacial y disfruta de la arquitectura y el ambiente local.",
+            "image": "/images/recommendations/casco-historico.jpg",
+            "category": "Cultura"
+        },
+        {
+            "title": "Sendero de los Zumaques",
+            "description": "Ruta de senderismo de intensidad baja-media ideal para familias. Vistas espectaculares de la Mota.",
+            "image": "/images/recommendations/zumaques.jpg",
+            "category": "Naturaleza"
+        },
+        {
+            "title": "Ribera del Río Velillos",
+            "description": "Un entorno natural refrescante, perfecto para paseos tranquilos y desconexión en plena naturaleza.",
+            "image": "/images/recommendations/velillos.png",
+            "category": "Naturaleza"
+        },
+        {
+            "title": "Mirador de San Marcos",
+            "description": "El mejor punto para ver la puesta de sol con la Fortaleza de la Mota de fondo. Inolvidable.",
+            "image": "/images/recommendations/mirador.png",
+            "category": "Vistas"
+        }
+    ]
+}

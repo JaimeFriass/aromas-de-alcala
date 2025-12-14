@@ -14,16 +14,34 @@ const {
 	image = "/images/contact-cover.jpg",
 } = Astro.props;
 
+const { lang = "es" } = Astro.params;
 const canonicalURL = new URL(Astro.url.pathname, "https://aromasdealcala.es");
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- i18n Alternates -->
+		<link
+			rel="alternate"
+			hreflang="es"
+			href="https://aromasdealcala.es/es/"
+		/>
+		<link
+			rel="alternate"
+			hreflang="en"
+			href="https://aromasdealcala.es/en/"
+		/>
+		<link
+			rel="alternate"
+			hreflang="x-default"
+			href="https://aromasdealcala.es/"
+		/>
 
 		<!-- SEO Primary -->
 		<title>{title}</title>

@@ -3,8 +3,9 @@
 interface Props {
     title: string;
     subtitle: string;
+    cta?: string;
 }
-const { title, subtitle } = Astro.props;
+const { title, subtitle, cta = "Reserva tu estancia" } = Astro.props;
 ---
 
 <section
@@ -43,7 +44,7 @@ const { title, subtitle } = Astro.props;
                 href="/contacto"
                 class="inline-block bg-white text-stone-900 px-12 py-5 rounded-xl uppercase tracking-widest text-sm font-black hover:bg-stone-100 transition-all transform hover:-translate-y-1 shadow-xl"
             >
-                Reserva tu estancia
+                {cta}
             </a>
         </div>
     </div>

@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aromasdealcala.es',
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+  },
   vite: {
     plugins: [tailwindcss()]
   },

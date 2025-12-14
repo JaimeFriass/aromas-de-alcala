@@ -1,0 +1,38 @@
+{
+    "hero": {
+        "title": "Discover the surroundings",
+        "subtitle": "History, nature, and gastronomy just a step away from your villa"
+    },
+    "featured": {
+        "badge": "Must see",
+        "title": "Fortaleza de la Mota",
+        "description": "An imposing fortified city dominating the landscape. Discover its walls, the Abbey Church, and the secrets of the Nasrid frontier. A must-visit to understand the history of Andalusia.",
+        "cta": "More info"
+    },
+    "list": [
+        {
+            "title": "Historic Center",
+            "description": "Stroll through the center of Alcalá, visit the Abbey Palace, and enjoy the architecture and local atmosphere.",
+            "image": "/images/recommendations/casco-historico.jpg",
+            "category": "Culture"
+        },
+        {
+            "title": "Zumaques Trail",
+            "description": "Low-medium intensity hiking route ideal for families. Spectacular views of the Mota Fortress.",
+            "image": "/images/recommendations/zumaques.jpg",
+            "category": "Nature"
+        },
+        {
+            "title": "Velillos River Bank",
+            "description": "A refreshing natural environment, perfect for quiet walks and disconnecting in nature.",
+            "image": "/images/recommendations/velillos.png",
+            "category": "Nature"
+        },
+        {
+            "title": "San Marcos Viewpoint",
+            "description": "The best spot to watch the sunset with the Fortaleza de la Mota in the background. Unforgettable.",
+            "image": "/images/recommendations/mirador.png",
+            "category": "Views"
+        }
+    ]
+}

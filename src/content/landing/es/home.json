@@ -1,0 +1,97 @@
+{
+    "hero": {
+        "title": "Aromas de Alcalá",
+        "subtitle": "Tu refugio privado. Villa rural exclusiva en el corazón de Andalucía.",
+        "cta": "Reserva tu estancia"
+    },
+    "intro": {
+        "title": "Lujo silencioso y desconexión",
+        "quote": "\"Más que una casa rural, una experiencia de privacidad absoluta y confort superior para quienes valoran los detalles.\"",
+        "description": "Una villa exclusiva en una ubicación privilegiada entre Córdoba, Granada y Jaén. El punto de partida ideal para descubrir la esencia del sur sin renunciar a la máxima comodidad."
+    },
+    "features": {
+        "label": "Espacios Premium",
+        "title": "Amplitud, Diseño y Privacidad",
+        "description_1": "La villa ofrece 6 dormitorios tipo suite, diseñados para el descanso absoluto. Cuatro cuentan con cama de matrimonio y dos con camas individuales, todas con baño privado en suite para máxima intimidad.",
+        "description_2": "Disfruta de un gran salón diáfano con cocina gourmet abierta, ideal para la convivencia. En el exterior, tu oasis privado: porche techado, solárium y una impresionante piscina de agua salada exclusiva para ti.",
+        "cta": "Descubre el entorno"
+    },
+    "rates": {
+        "label": "Precios",
+        "title": "Tarifas",
+        "high_season": {
+            "title": "Temporada Alta",
+            "items": [
+                "Verano (15 junio a 15 septiembre)",
+                "Puentes, festivos y vacaciones de navidad"
+            ],
+            "price": "40€",
+            "price_suffix": "/ persona y noche",
+            "note": "Precio mínimo 10 personas"
+        },
+        "low_season": {
+            "title": "Temporada Baja",
+            "items": [
+                "Resto del año"
+            ],
+            "price": "35€",
+            "price_suffix": "/ persona y noche",
+            "note": "Precio mínimo 8 personas"
+        }
+    },
+    "cta_section": {
+        "title": "Asegura tus fechas exclusivas",
+        "subtitle": "El lujo de no tener que compartir. Tu villa privada te espera.",
+        "button": "Contactar Ahora"
+    },
+    "policy": {
+        "title": "Política de admisiones",
+        "text": "Nos reservamos el derecho de admisión. No se aceptan reservas de grupos organizados de jóvenes, especialmente cuando el propósito principal sea la celebración de fiestas o actividades que puedan perturbar la tranquilidad del entorno o alterar las condiciones del alojamiento."
+    },
+    "amenities": {
+        "label": "Todo lo que necesitas",
+        "title": "Nuestras Instalaciones",
+        "description": "Disfruta de una casa totalmente equipada donde el diseño tradicional se une al confort moderno. Espacios amplios, luminosos y pensados para el disfrute de toda la familia.",
+        "features": [
+            {
+                "title": "Wifi incluido",
+                "description": "Varios espacios preparados para poder trabajar a distancia con internet de alta velocidad.",
+                "icon": "wifi"
+            },
+            {
+                "title": "Cocina equipada",
+                "description": "Cuenta con nevera americana, horno, lavavajillas, microondas, barra, vitrocerámica, cafetera, hervidor, menaje...",
+                "icon": "kitchen"
+            },
+            {
+                "title": "Amplios exteriores",
+                "description": "Vivienda rodeada de amplios exteriores, porche, piscina de agua salada y aparcamiento privado y techado.",
+                "icon": "pool"
+            },
+            {
+                "title": "Energía limpia",
+                "description": "Equipada con placas solares en el tejado, la vivienda permite generar su propia energía de manera limpia y renovable.",
+                "icon": "solar"
+            },
+            {
+                "title": "Barbacoa exterior",
+                "description": "Al lado del porche, disponemos de una barbacoa de obra exterior techada con barra al aire libre.",
+                "icon": "bbq"
+            },
+            {
+                "title": "Dormitorios preparados",
+                "description": "Te dejaremos preparado todo para tu estancia: ropa de cama, toallas, secador, gel y champú.",
+                "icon": "bed"
+            }
+        ],
+        "extras_title": "Y mucho más...",
+        "extras": [
+            "Baño accesible en la primera planta (sin escaleras)",
+            "Calefacción (aerotermia). Modo frío y calor",
+            "Ventiladores adicionales",
+            "Televisión 65'' Smart TV",
+            "Lavadora",
+            "Juegos de mesa"
+        ]
+    }
+}

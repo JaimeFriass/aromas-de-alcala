@@ -1,0 +1,163 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+    return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params;
+const entry = await getEntry("recommendations", lang === "en" ? "en" : "es");
+
+if (!entry) {
+    throw new Error(`Could not find content for recommendations/${lang}`);
+}
+
+const { data } = entry;
+---
+
+<Layout title={`${data.hero.title} - Aromas de Alcalá`}>
+    <Header />
+    <main class="min-h-screen bg-stone-50">
+        <!-- Page Hero -->
+        <div
+            class="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden mb-16"
+        >
+            <!-- Background w/ Parallax Feel -->
+            <div class="absolute inset-0 z-0">
+                <img
+                    src="/images/recommendations/recommendations-hero.png"
+                    alt="Alcalá la Real"
+                    class="w-full h-full object-cover"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-stone-50/0"
+                >
+                </div>
+                <div class="absolute inset-0 bg-black/20"></div>
+            </div>
+            <!-- Content -->
+            <div class="relative z-10 max-w-7xl mx-auto px-6 w-full mt-20">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-accent/20 backdrop-blur-sm border border-accent/30 text-accent-light text-xs font-bold tracking-widest uppercase mb-6 text-white"
+                    >Explora la zona</span
+                >
+                <h1
+                    class="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight drop-shadow-xl max-w-4xl"
+                >
+                    {data.hero.title}
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-stone-100 max-w-2xl leading-relaxed font-light drop-shadow-md"
+                >
+                    {data.hero.subtitle}
+                </p>
+            </div>
+        </div>
+
+        <!-- Featured Recommendation: Fortaleza de la Mota (3D) -->
+        <section
+            class="max-w-7xl mx-auto px-6 py-12 lg:py-24 overflow-hidden border-b border-stone-200/60 mb-16"
+        >
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
+                <div class="lg:w-5/12 text-left relative z-10">
+                    <span
+                        class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block"
+                        >{data.featured.badge}</span
+                    >
+                    <h2
+                        class="text-4xl md:text-5xl lg:text-6xl font-black text-stone-900 mb-6 font-sans tracking-tight"
+                    >
+                        {data.featured.title}
+                    </h2>
+                    <p
+                        class="text-lg md:text-xl text-stone-600 leading-relaxed max-w-lg mb-8 font-light"
+                    >
+                        {data.featured.description}
+                    </p>
+                    <div
+                        class="flex items-center space-x-2 text-sm font-medium text-stone-400"
+                    >
+                        <span class="w-8 h-px bg-accent"></span>
+                        <span class="uppercase tracking-widest"
+                            >{data.featured.cta}</span
+                        >
+                    </div>
+                </div>
+                <!-- 3D Image Container -->
+                <div
+                    class="lg:w-7/12 flex justify-center lg:justify-end relative"
+                >
+                    <div
+                        class="relative w-full max-w-4xl aspect-[16/9] lg:-mr-20 lg:-my-20 scale-110"
+                    >
+                        <div
+                            class="absolute inset-0 bg-accent/5 rounded-full blur-3xl transform translate-y-10 scale-75"
+                        >
+                        </div>
+                        <img
+                            src="/images/mota-3d.png"
+                            alt="Fortaleza de la Mota 3D"
+                            class="relative z-10 w-full h-full object-contain mix-blend-multiply hover:scale-105 transition-transform duration-700"
+                            style="-webkit-mask-image: radial-gradient(closest-side, black 60%, transparent 100%); mask-image: radial-gradient(closest-side, black 60%, transparent 100%);"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Section -->
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+            >
+                {
+                    data.list.map((item) => (
+                        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-stone-100 flex flex-col h-full">
+                            <div class="relative h-64 overflow-hidden">
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                            </div>
+                            <div class="p-8 flex-grow flex flex-col">
+                                <span class="text-xs font-bold text-accent uppercase tracking-wider mb-2">
+                                    {item.category}
+                                </span>
+                                <h3 class="text-2xl font-bold text-stone-900 mb-3 group-hover:text-accent transition-colors">
+                                    {item.title}
+                                </h3>
+                                <div class="w-12 h-1 bg-accent/30 mb-4 group-hover:bg-accent transition-colors" />
+                                <p class="text-stone-600 leading-relaxed font-light text-sm flex-grow">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center pb-24 px-6">
+            <p class="text-stone-500 mb-8 italic">
+                {
+                    lang === "es"
+                        ? "¿Necesitas más información o ayuda para reservar?"
+                        : "Need more info or help booking?"
+                }
+            </p>
+            <a
+                href={lang === "es" ? "/es/contacto" : "/en/contacto"}
+                class="inline-block bg-white text-stone-900 px-8 py-4 rounded-xl uppercase tracking-widest text-xs font-black hover:bg-stone-900 hover:text-white transition-all shadow-md border border-stone-200"
+            >
+                {lang === "es" ? "Consúltenos" : "Contact Us"}
+            </a>
+        </div>
+    </main>
+    <Footer />
+</Layout>

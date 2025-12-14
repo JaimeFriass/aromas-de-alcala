@@ -1,24 +1,48 @@
 ---
-const links = [
-    { text: "Inicio", href: "/" },
-    { text: "Recomendaciones", href: "/que-hacer-en-alcala" },
-    { text: "Contacto", href: "/contacto" },
-];
+const pathname = Astro.url.pathname;
+const currentLang = pathname.startsWith("/en") ? "en" : "es";
+
+const translations = {
+    es: {
+        links: [
+            { text: "Inicio", href: "/es/" },
+            { text: "Recomendaciones", href: "/es/que-hacer-en-alcala" },
+            { text: "Contacto", href: "/es/contacto" },
+        ],
+        switchText: "EN",
+        switchHref: pathname.startsWith("/es")
+            ? pathname.replace("/es", "/en")
+            : "/en/",
+        currentLabel: "ES",
+    },
+    en: {
+        links: [
+            { text: "Home", href: "/en/" },
+            { text: "Recommendations", href: "/en/que-hacer-en-alcala" },
+            { text: "Contact", href: "/en/contacto" },
+        ],
+        switchText: "ES",
+        switchHref: pathname.replace("/en", "/es"),
+        currentLabel: "EN",
+    },
+};
+
+const t = translations[currentLang];
 ---
 
 <header class="fixed w-full z-50 transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         <a
-            href="/"
+            href={currentLang === "en" ? "/en/" : "/es/"}
             id="header-logo"
             class="text-3xl font-black tracking-tight text-white hover:text-accent transition-colors"
         >
             Aromas de Alcalá
         </a>
 
-        <nav class="hidden md:flex space-x-10">
+        <nav class="hidden md:flex items-center space-x-10">
             {
-                links.map((link) => (
+                t.links.map((link) => (
                     <a
                         href={link.href}
                         class="nav-link text-white/90 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
@@ -27,6 +51,19 @@ const links = [
                     </a>
                 ))
             }
+            <div
+                class="flex items-center space-x-2 text-sm font-bold border-l border-white/20 pl-6 ml-2"
+                id="lang-switcher"
+            >
+                <span class="text-accent cursor-default">{t.currentLabel}</span>
+                <span class="text-white/40 header-divider">|</span>
+                <a
+                    href={t.switchHref}
+                    class="nav-link text-white/90 hover:text-accent transition-colors"
+                >
+                    {t.switchText}
+                </a>
+            </div>
         </nav>
 
         <!-- Mobile Menu Button (Hamburger) -->
@@ -57,12 +94,23 @@ const links = [
     >
         <nav class="flex flex-col p-6 space-y-4">
             {
-                links.map((link) => (
+                t.links.map((link) => (
                     <a href={link.href} class="text-white text-lg font-medium">
                         {link.text}
                     </a>
                 ))
             }
+            <div
+                class="flex items-center space-x-4 pt-4 border-t border-white/10 mt-2"
+            >
+                <span class="text-accent font-bold">{t.currentLabel}</span>
+                <a
+                    href={t.switchHref}
+                    class="text-white font-medium hover:text-accent"
+                >
+                    {t.switchText}
+                </a>
+            </div>
         </nav>
     </div>
 </header>
@@ -76,6 +124,8 @@ const links = [
 
     if (header) {
         window.addEventListener("scroll", () => {
+            const dividers = document.querySelectorAll(".header-divider");
+
             if (window.scrollY > 50) {
                 header.classList.add(
                     "bg-white/95",
@@ -91,6 +141,11 @@ const links = [
                 navLinks.forEach((link) => {
                     link.classList.remove("text-white/90");
                     link.classList.add("text-stone-600");
+                });
+
+                dividers.forEach((d) => {
+                    d.classList.remove("text-white/40");
+                    d.classList.add("text-stone-300");
                 });
 
                 mobileBtn?.classList.remove("text-white");
@@ -110,6 +165,11 @@ const links = [
                 navLinks.forEach((link) => {
                     link.classList.add("text-white/90");
                     link.classList.remove("text-stone-600");
+                });
+
+                dividers.forEach((d) => {
+                    d.classList.add("text-white/40");
+                    d.classList.remove("text-stone-300");
                 });
 
                 mobileBtn?.classList.add("text-white");

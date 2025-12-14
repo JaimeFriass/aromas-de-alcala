@@ -1,0 +1,97 @@
+{
+    "hero": {
+        "title": "Aromas de Alcalá",
+        "subtitle": "Your private sanctuary. Exclusive rural villa in the heart of Andalusia.",
+        "cta": "Book your stay"
+    },
+    "intro": {
+        "title": "Silent luxury and disconnection",
+        "quote": "\"More than a rural house, an experience of absolute privacy and superior comfort for those who value details.\"",
+        "description": "An exclusive villa in a privileged location between Córdoba, Granada, and Jaén. The ideal starting point to discover the essence of the south without sacrificing maximum comfort."
+    },
+    "features": {
+        "label": "Premium Spaces",
+        "title": "Spaciousness, Design, and Privacy",
+        "description_1": "The villa offers 6 suite-style bedrooms, designed for absolute rest. Four feature double beds and two have twin beds, all with private en-suite bathrooms for maximum privacy.",
+        "description_2": "Enjoy a large open-plan living room with an open gourmet kitchen, ideal for gathering. Outside, your private oasis: covered porch, solarium, and an impressive saltwater pool exclusively for you.",
+        "cta": "Discover the area"
+    },
+    "rates": {
+        "label": "Prices",
+        "title": "Rates",
+        "high_season": {
+            "title": "High Season",
+            "items": [
+                "Summer (June 15 to September 15)",
+                "Long weekends, holidays, and Christmas break"
+            ],
+            "price": "40€",
+            "price_suffix": "/ person per night",
+            "note": "Minimum price for 10 people"
+        },
+        "low_season": {
+            "title": "Low Season",
+            "items": [
+                "Rest of the year"
+            ],
+            "price": "35€",
+            "price_suffix": "/ person per night",
+            "note": "Minimum price for 8 people"
+        }
+    },
+    "cta_section": {
+        "title": "Secure your exclusive dates",
+        "subtitle": "The luxury of not having to share. Your private villa awaits.",
+        "button": "Contact Now"
+    },
+    "policy": {
+        "title": "Admission Policy",
+        "text": "We reserve the right of admission. We do not accept bookings from organized youth groups, especially when the main purpose is parties or activities that may disturb the tranquility of the environment or alter the accommodation conditions."
+    },
+    "amenities": {
+        "label": "Everything you need",
+        "title": "Our Facilities",
+        "description": "Enjoy a fully equipped house where traditional design meets modern comfort. Spacious, bright spaces designed for the enjoyment of the whole family.",
+        "features": [
+            {
+                "title": "Wifi included",
+                "description": "Several spaces prepared for remote working with high-speed internet.",
+                "icon": "wifi"
+            },
+            {
+                "title": "Equipped Kitchen",
+                "description": "Features American fridge, oven, dishwasher, microwave, breakfast bar, ceramic hob, coffee maker, kettle, kitchenware...",
+                "icon": "kitchen"
+            },
+            {
+                "title": "Spacious Outdoors",
+                "description": "Property surrounded by spacious exteriors, porch, saltwater pool, and private covered parking.",
+                "icon": "pool"
+            },
+            {
+                "title": "Clean Energy",
+                "description": "Equipped with solar panels on the roof, the house generates its own clean and renewable energy.",
+                "icon": "solar"
+            },
+            {
+                "title": "Outdoor BBQ",
+                "description": "Next to the porch, we have a covered built-in barbecue with an outdoor bar.",
+                "icon": "bbq"
+            },
+            {
+                "title": "Prepared Bedrooms",
+                "description": "We'll have everything ready for your stay: bedding, towels, hairdryer, gel, and shampoo.",
+                "icon": "bed"
+            }
+        ],
+        "extras_title": "And much more...",
+        "extras": [
+            "Accessible bathroom on the ground floor (no stairs)",
+            "Heating (aerothermal). Cooling and heating mode",
+            "Additional fans",
+            "65'' Smart TV",
+            "Washing machine",
+            "Board games"
+        ]
+    }
+}
