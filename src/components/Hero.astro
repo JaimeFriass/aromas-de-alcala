@@ -1,0 +1,50 @@
+---
+// We can use a prop for the image or hardcode a placeholder for now
+interface Props {
+    title: string;
+    subtitle: string;
+}
+const { title, subtitle } = Astro.props;
+---
+
+<section
+    class="relative h-screen flex items-center justify-center overflow-hidden"
+>
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img
+            src="/images/hero-cover.webp"
+            alt="Aromas de Alcalá - Cover"
+            class="w-full h-full object-cover"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"
+        >
+        </div>
+        <div class="absolute inset-0 bg-black/10"></div>
+    </div>
+
+    <!-- Content -->
+    <div
+        class="relative z-10 text-left text-white px-6 max-w-7xl mx-auto w-full"
+    >
+        <div class="max-w-3xl">
+            <h1
+                class="text-5xl md:text-7xl font-extrabold mb-2 tracking-tight drop-shadow-lg leading-tight"
+            >
+                {title}
+            </h1>
+            <p
+                class="text-xl md:text-2xl font-medium tracking-wide mb-8 leading-relaxed drop-shadow-md"
+            >
+                {subtitle}
+            </p>
+            <a
+                href="/contacto"
+                class="inline-block bg-white text-stone-900 px-12 py-5 rounded-xl uppercase tracking-widest text-sm font-black hover:bg-stone-100 transition-all transform hover:-translate-y-1 shadow-xl"
+            >
+                Reserva tu estancia
+            </a>
+        </div>
+    </div>
+</section>

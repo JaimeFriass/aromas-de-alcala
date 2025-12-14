@@ -1,0 +1,104 @@
+---
+import WhatsAppWidget from "../components/WhatsAppWidget.astro";
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const {
+	title,
+	description = "Villa rural exclusiva en Alcalá la Real. Confort premium, privacidad total y piscina de agua salada. El destino perfecto para familias y grupos exigentes.",
+	image = "/images/contact-cover.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://aromasdealcala.es");
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO Primary -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="theme-color" content="#D4C9BD" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, canonicalURL)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@type": "VacationRental",
+				"name": "Aromas de Alcalá - Villa Rural Exclusiva",
+				"description": "Experiencia de lujo rural en Alcalá la Real. Villa completa con 6 dormitorios, piscina de agua salada y privacidad absoluta.",
+				"url": "https://aromasdealcala.es",
+				"image": "https://aromasdealcala.es/images/contact-cover.jpg",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Alcalá la Real",
+					"addressRegion": "Jaén",
+					"addressCountry": "ES"
+				},
+				"starRating": {
+					"@type": "Rating",
+					"ratingValue": "5"
+				},
+				"amenityFeature": [
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "Piscina Privada de Agua Salada",
+						"value": "True"
+					},
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "WiFi Fibra Óptica",
+						"value": "True"
+					},
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "Privacidad Total",
+						"value": "True"
+					},
+					{
+						"@type": "LocationFeatureSpecification",
+						"name": "Cocina Gourmet Equipada",
+						"value": "True"
+					}
+				],
+				"priceRange": "150-400"
+			}
+		</script>
+	</head>
+	<body class="bg-white text-stone-800 font-sans antialiased">
+		<slot />
+		<WhatsAppWidget />
+	</body>
+</html>

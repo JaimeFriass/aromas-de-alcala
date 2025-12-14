@@ -1,0 +1,57 @@
+---
+const features = [
+    {
+        title: "6 Dormitorios",
+        description:
+            "Amplias habitaciones con baño privado, diseñadas para tu máximo confort.",
+        icon: "🛏️",
+    },
+    {
+        title: "Piscina de Agua Salada",
+        description:
+            "Disfruta de un baño refrescante en nuestra piscina privada con vistas.",
+        icon: "🏊",
+    },
+    {
+        title: "Cocina Equipada",
+        description:
+            "Cocina abierta totalmente equipada para preparar tus mejores platos.",
+        icon: "🍳",
+    },
+    {
+        title: "Entorno Natural",
+        description:
+            "Ubicado en Fuente del Rey, rodeado de naturaleza y tranquilidad.",
+        icon: "🌿",
+    },
+];
+---
+
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-serif text-stone-800 mb-4">
+                Nuestras Instalaciones
+            </h2>
+            <div class="w-24 h-1 bg-stone-300 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+                features.map((feature) => (
+                    <div class="p-8 bg-white text-center hover:shadow-xl transition-all duration-300 border border-stone-100 rounded-2xl group">
+                        <div class="text-4xl mb-6 text-accent group-hover:scale-110 transition-transform">
+                            {feature.icon}
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-3">
+                            {feature.title}
+                        </h3>
+                        <p class="text-stone-500 leading-relaxed text-sm">
+                            {feature.description}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

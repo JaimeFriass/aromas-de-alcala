@@ -1,0 +1,126 @@
+---
+const links = [
+    { text: "Inicio", href: "/" },
+    { text: "Recomendaciones", href: "/que-hacer-en-alcala" },
+    { text: "Contacto", href: "/contacto" },
+];
+---
+
+<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+        <a
+            href="/"
+            id="header-logo"
+            class="text-3xl font-black tracking-tight text-white hover:text-accent transition-colors"
+        >
+            Aromas de Alcalá
+        </a>
+
+        <nav class="hidden md:flex space-x-10">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="nav-link text-white/90 hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+                    >
+                        {link.text}
+                    </a>
+                ))
+            }
+        </nav>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button
+            class="md:hidden text-white focus:outline-none"
+            id="mobile-menu-btn"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+        class="md:hidden hidden bg-stone-900/95 backdrop-blur-md absolute w-full shadow-lg"
+        id="mobile-menu"
+    >
+        <nav class="flex flex-col p-6 space-y-4">
+            {
+                links.map((link) => (
+                    <a href={link.href} class="text-white text-lg font-medium">
+                        {link.text}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+</header>
+
+<script>
+    const header = document.getElementById("main-header");
+    const logo = document.getElementById("header-logo");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add(
+                    "bg-white/95",
+                    "backdrop-blur-md",
+                    "shadow-sm",
+                    "py-4",
+                );
+                header.classList.remove("py-6");
+
+                logo?.classList.remove("text-white");
+                logo?.classList.add("text-stone-900");
+
+                navLinks.forEach((link) => {
+                    link.classList.remove("text-white/90");
+                    link.classList.add("text-stone-600");
+                });
+
+                mobileBtn?.classList.remove("text-white");
+                mobileBtn?.classList.add("text-stone-900");
+            } else {
+                header.classList.remove(
+                    "bg-white/95",
+                    "backdrop-blur-md",
+                    "shadow-sm",
+                    "py-4",
+                );
+                header.classList.add("py-6");
+
+                logo?.classList.add("text-white");
+                logo?.classList.remove("text-stone-900");
+
+                navLinks.forEach((link) => {
+                    link.classList.add("text-white/90");
+                    link.classList.remove("text-stone-600");
+                });
+
+                mobileBtn?.classList.add("text-white");
+                mobileBtn?.classList.remove("text-stone-900");
+            }
+        });
+    }
+
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
+</script>
