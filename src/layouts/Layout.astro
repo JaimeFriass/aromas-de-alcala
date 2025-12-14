@@ -26,6 +26,57 @@ const canonicalURL = new URL(Astro.url.pathname, "https://aromasdealcala.es");
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-8S2VFXSTTY"
+		></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-8S2VFXSTTY");
+		</script>
+		<script is:inline>
+			// Conversion Tracking for relevant events
+			document.addEventListener("DOMContentLoaded", () => {
+				// Track WhatsApp Clicks
+				document.querySelectorAll('a[href*="wa.me"]').forEach((el) => {
+					el.addEventListener("click", () => {
+						gtag("event", "generate_lead", {
+							currency: "EUR",
+							source: "whatsapp",
+						});
+					});
+				});
+
+				// Track Phone Clicks
+				document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+					el.addEventListener("click", () => {
+						gtag("event", "generate_lead", {
+							currency: "EUR",
+							source: "phone",
+						});
+					});
+				});
+
+				// Track Email Clicks
+				document
+					.querySelectorAll('a[href^="mailto:"]')
+					.forEach((el) => {
+						el.addEventListener("click", () => {
+							gtag("event", "generate_lead", {
+								currency: "EUR",
+								source: "email",
+							});
+						});
+					});
+			});
+		</script>
+
 		<!-- i18n Alternates -->
 		<link rel="alternate" hreflang="es" href="https://aromasdealcala.es/" />
 		<link
