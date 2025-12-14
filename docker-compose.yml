@@ -1,0 +1,9 @@
+services:
+  aromas-app:
+    build: .
+    container_name: aromas-de-alcala
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production

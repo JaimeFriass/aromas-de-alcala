@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.vscode
+.DS_Store
+README.md
+task.md
+implementation_plan.md
+walkthrough.md
