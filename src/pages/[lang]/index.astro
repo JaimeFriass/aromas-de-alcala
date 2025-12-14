@@ -9,7 +9,7 @@ import Testimonials from "../../components/Testimonials.astro";
 import Footer from "../../components/Footer.astro";
 
 export async function getStaticPaths() {
-    return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+    return [{ params: { lang: "en" } }];
 }
 
 const { lang } = Astro.params;
@@ -96,7 +96,7 @@ const { data } = entry;
                         {data.features.description_2}
                     </p>
                     <a
-                        href={`/${lang === "es" ? "que-hacer-en-alcala" : "en/what-to-do"}`}
+                        href={`/${lang === "es" ? "que-hacer-en-alcala" : "en/que-hacer-en-alcala"}`}
                         class="text-accent font-bold hover:text-accent-hover transition-colors inline-flex items-center tracking-wide"
                     >
                         {data.features.cta}

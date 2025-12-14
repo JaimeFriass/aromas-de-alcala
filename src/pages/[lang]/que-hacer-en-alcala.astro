@@ -5,7 +5,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
 export async function getStaticPaths() {
-    return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+    return [{ params: { lang: "en" } }];
 }
 
 const { lang } = Astro.params;
@@ -152,7 +152,7 @@ const { data } = entry;
                 }
             </p>
             <a
-                href={lang === "es" ? "/es/contacto" : "/en/contacto"}
+                href={lang === "es" ? "/contacto" : "/en/contacto"}
                 class="inline-block bg-white text-stone-900 px-8 py-4 rounded-xl uppercase tracking-widest text-xs font-black hover:bg-stone-900 hover:text-white transition-all shadow-md border border-stone-200"
             >
                 {lang === "es" ? "Consúltenos" : "Contact Us"}

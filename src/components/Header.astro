@@ -5,14 +5,12 @@ const currentLang = pathname.startsWith("/en") ? "en" : "es";
 const translations = {
     es: {
         links: [
-            { text: "Inicio", href: "/es/" },
-            { text: "Recomendaciones", href: "/es/que-hacer-en-alcala" },
-            { text: "Contacto", href: "/es/contacto" },
+            { text: "Inicio", href: "/" },
+            { text: "Recomendaciones", href: "/que-hacer-en-alcala" },
+            { text: "Contacto", href: "/contacto" },
         ],
         switchText: "EN",
-        switchHref: pathname.startsWith("/es")
-            ? pathname.replace("/es", "/en")
-            : "/en/",
+        switchHref: "/en" + (pathname === "/" ? "" : pathname),
         currentLabel: "ES",
     },
     en: {
@@ -22,7 +20,7 @@ const translations = {
             { text: "Contact", href: "/en/contacto" },
         ],
         switchText: "ES",
-        switchHref: pathname.replace("/en", "/es"),
+        switchHref: pathname.replace("/en", "") || "/",
         currentLabel: "EN",
     },
 };
@@ -33,7 +31,7 @@ const t = translations[currentLang];
 <header class="fixed w-full z-50 transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
         <a
-            href={currentLang === "en" ? "/en/" : "/es/"}
+            href={currentLang === "en" ? "/en/" : "/"}
             id="header-logo"
             class="text-3xl font-black tracking-tight text-white hover:text-accent transition-colors"
         >
