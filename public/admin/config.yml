@@ -6,13 +6,205 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "projects"
-    label: "Proyectos"
-    folder: "src/content/projects"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Descripción", name: "description", widget: "text"}
-      - {label: "Imagen Principal", name: "image", widget: "image"}
-      - {label: "Cuerpo", name: "body", widget: "markdown"}
+  - name: "landing"
+    label: "Landing Page"
+    files:
+      - name: "home_es"
+        label: "Home (Español)"
+        file: "src/content/landing/es/home.json"
+        fields:
+          - {label: "Hero", name: "hero", widget: "object", fields: [
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Subtítulo", name: "subtitle", widget: "string"},
+              {label: "CTA", name: "cta", widget: "string"}
+            ]}
+          - {label: "Intro", name: "intro", widget: "object", fields: [
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Cita", name: "quote", widget: "text"},
+              {label: "Descripción", name: "description", widget: "text"}
+            ]}
+          - {label: "Amenities", name: "amenities", widget: "object", fields: [
+              {label: "Etiqueta", name: "label", widget: "string"},
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Descripción", name: "description", widget: "text"},
+              {label: "Características", name: "features", widget: "list", fields: [
+                  {label: "Título", name: "title", widget: "string"},
+                  {label: "Descripción", name: "description", widget: "text"},
+                  {label: "Icono", name: "icon", widget: "string"}
+              ]},
+              {label: "Título Extras", name: "extras_title", widget: "string"},
+              {label: "Extras", name: "extras", widget: "list"}
+            ]}
+          - {label: "Galería", name: "gallery", widget: "object", fields: [
+              {label: "Etiqueta", name: "label", widget: "string"},
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Descripción", name: "description", widget: "text"},
+              {label: "Imágenes", name: "items", widget: "list", fields: [
+                  {label: "Imagen", name: "image", widget: "image"},
+                  {label: "Título", name: "title", widget: "string"},
+                  {label: "Descripción", name: "description", widget: "text"}
+              ]}
+            ]}
+          - {label: "Tarifas", name: "rates", widget: "object", fields: [
+              {label: "Etiqueta", name: "label", widget: "string"},
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Temporada Alta", name: "high_season", widget: "object", fields: [
+                  {label: "Título", name: "title", widget: "string"},
+                  {label: "Items", name: "items", widget: "list"},
+                  {label: "Precio", name: "price", widget: "string"},
+                  {label: "Sufijo", name: "price_suffix", widget: "string"},
+                  {label: "Nota", name: "note", widget: "string"}
+              ]},
+              {label: "Temporada Baja", name: "low_season", widget: "object", fields: [
+                  {label: "Título", name: "title", widget: "string"},
+                  {label: "Items", name: "items", widget: "list"},
+                  {label: "Precio", name: "price", widget: "string"},
+                  {label: "Sufijo", name: "price_suffix", widget: "string"},
+                  {label: "Nota", name: "note", widget: "string"}
+              ]}
+            ]}
+          - {label: "CTA Final", name: "cta_section", widget: "object", fields: [
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Subtítulo", name: "subtitle", widget: "string"},
+              {label: "Botón", name: "button", widget: "string"}
+            ]}
+          - {label: "Política", name: "policy", widget: "object", fields: [
+              {label: "Título", name: "title", widget: "string"},
+              {label: "Texto", name: "text", widget: "text"}
+            ]}
+      
+      - name: "home_en"
+        label: "Home (English)"
+        file: "src/content/landing/en/home.json"
+        fields:
+          - {label: "Hero", name: "hero", widget: "object", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Subtitle", name: "subtitle", widget: "string"},
+              {label: "CTA", name: "cta", widget: "string"}
+            ]}
+          - {label: "Intro", name: "intro", widget: "object", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Quote", name: "quote", widget: "text"},
+              {label: "Description", name: "description", widget: "text"}
+            ]}
+          - {label: "Amenities", name: "amenities", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string"},
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Description", name: "description", widget: "text"},
+              {label: "Features", name: "features", widget: "list", fields: [
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Description", name: "description", widget: "text"},
+                  {label: "Icon", name: "icon", widget: "string"}
+              ]},
+              {label: "Extras Title", name: "extras_title", widget: "string"},
+              {label: "Extras", name: "extras", widget: "list"}
+            ]}
+          - {label: "Gallery", name: "gallery", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string"},
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Description", name: "description", widget: "text"},
+              {label: "Items", name: "items", widget: "list", fields: [
+                  {label: "Image", name: "image", widget: "image"},
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Description", name: "description", widget: "text"}
+              ]}
+            ]}
+          - {label: "Rates", name: "rates", widget: "object", fields: [
+              {label: "Label", name: "label", widget: "string"},
+              {label: "Title", name: "title", widget: "string"},
+              {label: "High Season", name: "high_season", widget: "object", fields: [
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Items", name: "items", widget: "list"},
+                  {label: "Price", name: "price", widget: "string"},
+                  {label: "Suffix", name: "price_suffix", widget: "string"},
+                  {label: "Note", name: "note", widget: "string"}
+              ]},
+              {label: "Low Season", name: "low_season", widget: "object", fields: [
+                  {label: "Title", name: "title", widget: "string"},
+                  {label: "Items", name: "items", widget: "list"},
+                  {label: "Price", name: "price", widget: "string"},
+                  {label: "Suffix", name: "price_suffix", widget: "string"},
+                  {label: "Note", name: "note", widget: "string"}
+              ]}
+            ]}
+          - {label: "CTA Final", name: "cta_section", widget: "object", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Subtitle", name: "subtitle", widget: "string"},
+              {label: "Button", name: "button", widget: "string"}
+            ]}
+          - {label: "Policy", name: "policy", widget: "object", fields: [
+              {label: "Title", name: "title", widget: "string"},
+              {label: "Text", name: "text", widget: "text"}
+            ]}
+
+  - name: "contact"
+    label: "Contact"
+    files:
+      - name: "contact_es"
+        label: "Contact (Español)"
+        file: "src/content/contact/es.json"
+        fields:
+            - {label: "Título", name: "title", widget: "string"}
+            - {label: "Subtítulo", name: "subtitle", widget: "string"}
+            - {label: "Dirección", name: "address", widget: "string"}
+            - {label: "Email", name: "email", widget: "string"}
+            - {label: "Teléfono 1", name: "phone_1", widget: "string"}
+            - {label: "Teléfono 2", name: "phone_2", widget: "string"}
+            - {label: "WhatsApp CTA", name: "whatsapp_cta", widget: "string"}
+            - {label: "Social CTA", name: "social_cta", widget: "string"}
+      - name: "contact_en"
+        label: "Contact (English)"
+        file: "src/content/contact/en.json"
+        fields:
+            - {label: "Title", name: "title", widget: "string"}
+            - {label: "Subtitle", name: "subtitle", widget: "string"}
+            - {label: "Address", name: "address", widget: "string"}
+            - {label: "Email", name: "email", widget: "string"}
+            - {label: "Phone 1", name: "phone_1", widget: "string"}
+            - {label: "Phone 2", name: "phone_2", widget: "string"}
+            - {label: "WhatsApp CTA", name: "whatsapp_cta", widget: "string"}
+            - {label: "Social CTA", name: "social_cta", widget: "string"}
+
+  - name: "recommendations"
+    label: "Recommendations"
+    files:
+      - name: "recommendations_es"
+        label: "Recommendations (Español)"
+        file: "src/content/recommendations/es.json"
+        fields:
+            - {label: "Hero", name: "hero", widget: "object", fields: [
+                {label: "Título", name: "title", widget: "string"},
+                {label: "Subtítulo", name: "subtitle", widget: "string"}
+              ]}
+            - {label: "Destacado", name: "featured", widget: "object", fields: [
+                {label: "Badge", name: "badge", widget: "string"},
+                {label: "Título", name: "title", widget: "string"},
+                {label: "Descripción", name: "description", widget: "text"},
+                {label: "CTA", name: "cta", widget: "string"}
+              ]}
+            - {label: "Lista", name: "list", widget: "list", fields: [
+                {label: "Título", name: "title", widget: "string"},
+                {label: "Descripción", name: "description", widget: "text"},
+                {label: "Imagen", name: "image", widget: "image"},
+                {label: "Categoría", name: "category", widget: "string"}
+              ]}
+      - name: "recommendations_en"
+        label: "Recommendations (English)"
+        file: "src/content/recommendations/en.json"
+        fields:
+            - {label: "Hero", name: "hero", widget: "object", fields: [
+                {label: "Title", name: "title", widget: "string"},
+                {label: "Subtitle", name: "subtitle", widget: "string"}
+              ]}
+            - {label: "Featured", name: "featured", widget: "object", fields: [
+                {label: "Badge", name: "badge", widget: "string"},
+                {label: "Title", name: "title", widget: "string"},
+                {label: "Description", name: "description", widget: "text"},
+                {label: "CTA", name: "cta", widget: "string"}
+              ]}
+            - {label: "List", name: "list", widget: "list", fields: [
+                {label: "Title", name: "title", widget: "string"},
+                {label: "Description", name: "description", widget: "text"},
+                {label: "Image", name: "image", widget: "image"},
+                {label: "Category", name: "category", widget: "string"}
+              ]}

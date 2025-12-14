@@ -70,6 +70,18 @@ const landingCollection = defineCollection({
 			extras_title: z.string(),
 			extras: z.array(z.string()),
 		}),
+		gallery: z.object({
+			label: z.string(),
+			title: z.string(),
+			description: z.string(),
+			items: z.array(
+				z.object({
+					image: z.string(),
+					title: z.string(),
+					description: z.string(),
+				})
+			),
+		}),
 	}),
 });
 

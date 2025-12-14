@@ -1,0 +1,208 @@
+---
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'photoswipe/style.css';
+
+interface Props {
+  data: {
+    label: string;
+    title: string;
+    description: string;
+    items: {
+      image: string;
+      title: string;
+      description: string;
+    }[];
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="py-24 bg-stone-50 overflow-hidden relative" id="gallery-section">
+  <div class="container mx-auto px-6 mb-12 relative z-10">
+    <div class="flex flex-col md:flex-row items-end justify-between gap-8">
+      <div class="max-w-2xl">
+        <span class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">
+          {data.label}
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4 font-sans">
+          {data.title}
+        </h2>
+        <p class="text-lg text-stone-600 leading-relaxed">
+          {data.description}
+        </p>
+      </div>
+      <!-- Custom Navigation Buttons -->
+      <div class="flex gap-4">
+        <button class="swiper-button-prev-custom w-12 h-12 rounded-full border border-stone-300 flex items-center justify-center text-stone-500 hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="swiper-button-next-custom w-12 h-12 rounded-full border border-stone-300 flex items-center justify-center text-stone-500 hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper gallery-slider md:!pl-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))]">
+    <div class="swiper-wrapper" id="gallery-wrapper">
+      {data.items.map((item, index) => (
+        <div class="swiper-slide">
+          <a 
+            href={item.image} 
+            data-pswp-width="1200" 
+            data-pswp-height="800" 
+            target="_blank"
+            class="block group relative overflow-hidden rounded-2xl cursor-zoom-in"
+          >
+            <div class="relative h-[500px]"> 
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                onload="this.setAttribute('data-loaded', 'true')"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+              
+              <!-- Hover Content -->
+              <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
+                 <h3 class="text-white font-bold text-xl">{item.title}</h3>
+                 <p class="text-stone-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">{item.description}</p>
+              </div>
+            </div>
+            <!-- Hidden caption for PhotoSwipe -->
+            <div class="hidden-caption-content hidden">
+                <div class="text-center p-4">
+                    <h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <p class="text-stone-300">{item.description}</p>
+                </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Autoplay } from 'swiper/modules';
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import PhotoSwipe from 'photoswipe';
+
+  // Initialize Swiper
+  const swiper = new Swiper('.gallery-slider', {
+    modules: [Navigation, Autoplay],
+    slidesPerView: 1.25,
+    centeredSlides: true,
+    spaceBetween: 20,
+    grabCursor: true,
+    navigation: {
+      nextEl: '.swiper-button-next-custom',
+      prevEl: '.swiper-button-prev-custom',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        centeredSlides: false,
+        spaceBetween: 24,
+      },
+      1024: {
+        slidesPerView: 3,
+        centeredSlides: false,
+        spaceBetween: 24,
+      }
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+  });
+
+  // Initialize PhotoSwipe
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-wrapper',
+    children: 'a',
+    pswpModule: PhotoSwipe,
+    paddingFn: (viewportSize) => {
+      return {
+        top: 30, bottom: 30, left: 70, right: 70
+      }
+    },
+  });
+
+  // Dynamic image size calculation for PhotoSwipe
+  lightbox.on('uiRegister', function() {
+    lightbox.pswp?.ui?.registerElement({
+      name: 'custom-caption',
+      order: 9,
+      isButton: false,
+      appendTo: 'root',
+      html: 'Caption text',
+      onInit: (el, pswp) => {
+        lightbox.pswp?.on('change', () => {
+          const currSlideElement = lightbox.pswp?.currSlide?.data?.element;
+          let captionHTML = '';
+          if (currSlideElement) {
+            const hiddenCaption = currSlideElement.querySelector('.hidden-caption-content');
+            if (hiddenCaption) {
+              captionHTML = hiddenCaption.innerHTML;
+            }
+          }
+          el.innerHTML = captionHTML || '';
+        });
+      }
+    });
+  });
+  
+  // Update image dimensions on open to ensure smooth animation if possible, 
+  // or mainly just correct full screen display.
+  // Since we hardcoded data-pswp-width/height, it might be distorted if real image is different aspect ratio.
+  // Best practice without known sizes is to load image and update. 
+  // For simplicity in this iteration, we keep hardcoded but user should ideally provide them.
+  // Alternatively, we can use a small script to pre-calculate natural dimensions on page load.
+  
+  const images = document.querySelectorAll('#gallery-wrapper img');
+  images.forEach((img) => {
+      const imageEl = img as HTMLImageElement;
+      if (imageEl.complete) {
+          updateDimension(imageEl);
+      } else {
+          imageEl.onload = () => updateDimension(imageEl);
+      }
+  });
+
+  function updateDimension(img: HTMLImageElement) {
+      const anchor = img.closest('a');
+      if(anchor) {
+          anchor.setAttribute('data-pswp-width', String(img.naturalWidth));
+          anchor.setAttribute('data-pswp-height', String(img.naturalHeight));
+      }
+  }
+
+  lightbox.init();
+</script>
+
+<style>
+    /* Styling for the caption in PhotoSwipe */
+    :global(.pswp__custom-caption) {
+        background: rgba(0, 0, 0, 0.7);
+        bottom: 0px;
+        position: absolute;
+        width: 100%;
+        color: white;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+</style>

@@ -93,5 +93,42 @@
             "Lavadora",
             "Juegos de mesa"
         ]
+    },
+    "gallery": {
+        "label": "Descubre",
+        "title": "Rincones con Encanto",
+        "description": "Cada detalle cuenta. Explora los espacios diseñados para vivir experiencias inolvidables.",
+        "items": [
+            {
+                "image": "/images/gallery/01.webp",
+                "title": "La Torre y El Cielo",
+                "description": "Vistas icónicas que abrazan la historia."
+            },
+            {
+                "image": "/images/gallery/02.jpg",
+                "title": "Salón con Encanto",
+                "description": "Espacio acogedor con materiales nobles."
+            },
+            {
+                "image": "/images/gallery/03.jpg",
+                "title": "Cocina Abierta",
+                "description": "Diseño funcional para compartir momentos."
+            },
+            {
+                "image": "/images/gallery/04.jpg",
+                "title": "Habitación Suite",
+                "description": "Descanso garantizado con luz natural."
+            },
+            {
+                "image": "/images/gallery/05.jpg",
+                "title": "Baño Principal",
+                "description": "Elegancia y confort en cada detalle."
+            },
+            {
+                "image": "/images/gallery/06.webp",
+                "title": "Exteriores y Relax",
+                "description": "Conexión directa con el entorno natural."
+            }
+        ]
     }
 }

@@ -93,5 +93,42 @@
             "Washing machine",
             "Board games"
         ]
+    },
+    "gallery": {
+        "label": "Discover",
+        "title": "Charming Corners",
+        "description": "Every detail counts. Explore spaces designed for unforgettable experiences.",
+        "items": [
+            {
+                "image": "/images/gallery/01.webp",
+                "title": "The Tower & The Sky",
+                "description": "Iconic views embracing history."
+            },
+            {
+                "image": "/images/gallery/02.jpg",
+                "title": "Charming Living Room",
+                "description": "Cozy space with noble materials."
+            },
+            {
+                "image": "/images/gallery/03.jpg",
+                "title": "Open Kitchen",
+                "description": "Functional design for sharing moments."
+            },
+            {
+                "image": "/images/gallery/04.jpg",
+                "title": "Suite Bedroom",
+                "description": "Guaranteed rest with natural light."
+            },
+            {
+                "image": "/images/gallery/05.jpg",
+                "title": "Main Bathroom",
+                "description": "Elegance and comfort in every detail."
+            },
+            {
+                "image": "/images/gallery/06.webp",
+                "title": "Outdoors & Relax",
+                "description": "Direct connection with the natural environment."
+            }
+        ]
     }
 }
