@@ -1,10 +1,12 @@
 {
-    "title": "Hospitalidad de Lujo",
-    "subtitle": "Estamos aquí para hacer de tu estancia una experiencia inolvidable. Atención personalizada antes, durante y después de tu visita.",
+    "title": "Contacto",
+    "subtitle": "Preferible contacto por WhatsApp",
     "address": "Alcalá la Real, Jaén, Andalucía",
-    "email": "hola@aromasdealcala.es",
-    "phone_1": "+34 600 000 000",
-    "phone_2": "+34 600 000 001",
+    "email": "aromasdealcala@gmail.com",
+    "phone_1": "690 83 13 38",
+    "phone_1_label": "Mañanas",
+    "phone_2": "699 09 98 96",
+    "phone_2_label": "Tardes",
     "whatsapp_cta": "Iniciar conversación",
     "social_cta": "Síguenos en Instagram"
 }

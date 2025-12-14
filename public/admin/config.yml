@@ -149,7 +149,9 @@ collections:
             - {label: "Dirección", name: "address", widget: "string"}
             - {label: "Email", name: "email", widget: "string"}
             - {label: "Teléfono 1", name: "phone_1", widget: "string"}
+            - {label: "Etiqueta Teléfono 1", name: "phone_1_label", widget: "string"}
             - {label: "Teléfono 2", name: "phone_2", widget: "string"}
+            - {label: "Etiqueta Teléfono 2", name: "phone_2_label", widget: "string"}
             - {label: "WhatsApp CTA", name: "whatsapp_cta", widget: "string"}
             - {label: "Social CTA", name: "social_cta", widget: "string"}
       - name: "contact_en"
@@ -161,7 +163,9 @@ collections:
             - {label: "Address", name: "address", widget: "string"}
             - {label: "Email", name: "email", widget: "string"}
             - {label: "Phone 1", name: "phone_1", widget: "string"}
+            - {label: "Phone 1 Label", name: "phone_1_label", widget: "string"}
             - {label: "Phone 2", name: "phone_2", widget: "string"}
+            - {label: "Phone 2 Label", name: "phone_2_label", widget: "string"}
             - {label: "WhatsApp CTA", name: "whatsapp_cta", widget: "string"}
             - {label: "Social CTA", name: "social_cta", widget: "string"}
 
