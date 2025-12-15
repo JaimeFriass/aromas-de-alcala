@@ -1,0 +1,101 @@
+---
+
+---
+
+<div
+    id="cookie-banner"
+    class="fixed bottom-0 left-0 right-0 bg-stone-900 border-t border-white/10 p-6 z-[100] transform transition-transform duration-500 translate-y-full hidden"
+>
+    <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
+    >
+        <div class="text-white/90 text-sm md:text-base leading-relaxed">
+            <p class="font-bold text-white mb-1">🍪 Política de Cookies</p>
+            <p>
+                Utilizamos cookies propias y de terceros para analizar nuestros
+                servicios y mejorar tu experiencia. ¿Aceptas el uso de cookies
+                de análisis (Google Analytics)?
+            </p>
+        </div>
+        <div class="flex items-center gap-4 flex-shrink-0">
+            <button
+                id="reject-cookies"
+                class="px-6 py-2.5 rounded-lg text-sm font-bold text-stone-300 hover:text-white hover:bg-white/10 transition-colors border border-white/20"
+            >
+                Denegar
+            </button>
+            <button
+                id="accept-cookies"
+                class="px-6 py-2.5 rounded-lg text-sm font-bold bg-accent text-white hover:bg-accent-hover shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+            >
+                Aceptar todas
+            </button>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    // Configuration
+    const GA_ID = "G-8S2VFXSTTY";
+    const KEY = "aromas_cookie_consent";
+
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+
+    // Helper: Load GA Script
+    function loadGA() {
+        console.log("Loading Google Analytics...");
+        // 1. Load the script tag
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(script);
+
+        // 2. Configure gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", GA_ID);
+    }
+
+    // Logic
+    const consent = localStorage.getItem(KEY);
+
+    if (consent === "granted") {
+        loadGA();
+    } else if (consent === "denied") {
+        // Do nothing (or remove cookies if complexity required, but blocking load is sufficient for first touch)
+    } else {
+        // Show banner if no choice made
+        if (banner) {
+            banner.classList.remove("hidden");
+            // Small delay for animation
+            setTimeout(() => {
+                banner.classList.remove("translate-y-full");
+            }, 100);
+        }
+    }
+
+    // Events
+    acceptBtn?.addEventListener("click", () => {
+        localStorage.setItem(KEY, "granted");
+        loadGA();
+        hideBanner();
+    });
+
+    rejectBtn?.addEventListener("click", () => {
+        localStorage.setItem(KEY, "denied");
+        hideBanner();
+    });
+
+    function hideBanner() {
+        if (!banner) return;
+        banner.classList.add("translate-y-full");
+        setTimeout(() => {
+            banner.classList.add("hidden");
+        }, 500);
+    }
+</script>
