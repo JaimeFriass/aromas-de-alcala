@@ -4,33 +4,36 @@
 
 <div
     id="cookie-banner"
-    class="fixed bottom-0 left-0 right-0 bg-stone-900 border-t border-white/10 p-6 z-[100] transform transition-transform duration-500 translate-y-full hidden"
+    class="fixed bottom-6 left-6 z-[100] max-w-[300px] w-[calc(100%-3rem)] bg-stone-900/85 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-5 transform transition-all duration-700 translate-y-32 opacity-0 hidden flex-col gap-4"
 >
-    <div
-        class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
-    >
-        <div class="text-white/90 text-sm md:text-base leading-relaxed">
-            <p class="font-bold text-white mb-1">🍪 Política de Cookies</p>
-            <p>
-                Utilizamos cookies propias y de terceros para analizar nuestros
-                servicios y mejorar tu experiencia. ¿Aceptas el uso de cookies
-                de análisis (Google Analytics)?
-            </p>
-        </div>
-        <div class="flex items-center gap-4 flex-shrink-0">
-            <button
-                id="reject-cookies"
-                class="px-6 py-2.5 rounded-lg text-sm font-bold text-stone-300 hover:text-white hover:bg-white/10 transition-colors border border-white/20"
+    <!-- Content -->
+    <div>
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-lg animate-pulse">🍪</span>
+            <span class="font-bold text-white text-sm tracking-wide"
+                >Privacidad</span
             >
-                Denegar
-            </button>
-            <button
-                id="accept-cookies"
-                class="px-6 py-2.5 rounded-lg text-sm font-bold bg-accent text-white hover:bg-accent-hover shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
-            >
-                Aceptar todas
-            </button>
         </div>
+        <p class="text-stone-300 text-xs leading-relaxed font-light">
+            Usamos cookies para mejorar tu experiencia y analizar el tráfico del
+            sitio.
+        </p>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-between gap-3 pt-1">
+        <button
+            id="reject-cookies"
+            class="text-xs font-medium text-stone-500 hover:text-stone-300 transition-colors px-2 py-2"
+        >
+            No, gracias
+        </button>
+        <button
+            id="accept-cookies"
+            class="flex-1 bg-white text-stone-900 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-stone-100 transition-all shadow-lg hover:shadow-white/20 text-center"
+        >
+            Aceptar
+        </button>
     </div>
 </div>
 
@@ -67,15 +70,17 @@
     if (consent === "granted") {
         loadGA();
     } else if (consent === "denied") {
-        // Do nothing (or remove cookies if complexity required, but blocking load is sufficient for first touch)
+        // Do nothing
     } else {
         // Show banner if no choice made
         if (banner) {
             banner.classList.remove("hidden");
+            banner.style.display = "flex";
             // Small delay for animation
             setTimeout(() => {
-                banner.classList.remove("translate-y-full");
-            }, 100);
+                banner.classList.remove("translate-y-32");
+                banner.classList.remove("opacity-0");
+            }, 500); // Wait a bit so it doesn't pop up INSTANTLY on load
         }
     }
 
@@ -93,9 +98,10 @@
 
     function hideBanner() {
         if (!banner) return;
-        banner.classList.add("translate-y-full");
+        banner.classList.add("translate-y-32");
+        banner.classList.add("opacity-0");
         setTimeout(() => {
             banner.classList.add("hidden");
-        }, 500);
+        }, 700);
     }
 </script>
